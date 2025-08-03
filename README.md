@@ -102,7 +102,7 @@ npm run dev
 ### Project Links
 
   - **GitHub Repository**: [https://github.com/vedant208purohit/shop-hub-208.git](https://github.com/vedant208purohit/shop-hub-208.git)
-  - **Live Demo**: [Available upon request]
+  - **Live Demo**: [https://drive.google.com/file/d/1R0H0sf8dz_WbhcsPsyoBmdi8etu7Qqrb/view?usp=drive_link](https://drive.google.com/file/d/1R0H0sf8dz_WbhcsPsyoBmdi8etu7Qqrb/view?usp=drive_link)
   - **Demo Credentials**:
       - Email: `demo@example.com`
       - Password: `password`
