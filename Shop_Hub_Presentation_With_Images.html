@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Hub - E-Commerce Application Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: white;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .slide h1 {
+            font-size: 3.5rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            color: #34495e;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .slide h3 {
+            font-size: 2rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .slide p {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 15px;
+            max-width: 800px;
+        }
+
+        .slide ul {
+            list-style: none;
+            text-align: left;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+
+        .slide li {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .slide li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .tech-card h4 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .tech-card ul {
+            margin: 0;
+            text-align: left;
+        }
+
+        .tech-card li {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .feature-card h4 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card ul {
+            margin: 0;
+            text-align: left;
+        }
+
+        .architecture {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 30px auto;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 25px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            text-align: left;
+            max-width: 700px;
+            margin: 20px auto;
+            overflow-x: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .contact-info h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        /* New CSS for screenshots */
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .screenshot-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 2px solid #f8f9fa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .screenshot-card h4 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .screenshot {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            border: 1px solid #e9ecef;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+            border: 2px dashed #667eea;
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .screenshot-card p {
+            font-size: 1rem;
+            color: #555;
+            margin: 0;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        @media print {
+            .slide {
+                page-break-after: always;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide">
+        <h1>Shop Hub</h1>
+        <h2>Modern E-Commerce Platform</h2>
+        <p style="font-size: 1.5rem; color: #7f8c8d; margin-bottom: 30px;">Internship Project Presentation</p>
+        
+        <div class="tech-stack">
+            <div class="tech-card">
+                <h4>Technology Stack</h4>
+                <ul>
+                    <li>React 18 + TypeScript</li>
+                    <li>Vite Build Tool</li>
+                    <li>Tailwind CSS</li>
+                    <li>Shadcn/ui Components</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 1.2rem;">
+            <strong>Duration:</strong> [Your Duration] | 
+            <strong>Team:</strong> [Your Name] | 
+            <strong>Supervisor:</strong> [Supervisor Name]
+        </p>
+    </div>
+
+    <!-- Slide 2: Agenda -->
+    <div class="slide">
+        <h2>Presentation Agenda</h2>
+        <ul style="text-align: center; max-width: 600px;">
+            <li>Project Overview & Problem Statement</li>
+            <li>Technology Stack & Architecture</li>
+            <li>Key Features & Implementation</li>
+            <li>Testing Strategy & Achievements</li>
+            <li>Technical Challenges & Solutions</li>
+            <li>Lessons Learned & Future Plans</li>
+            <li>Demo & Project Statistics</li>
+            <li>Questions & Discussion</li>
+        </ul>
+    </div>
+
+    <!-- Slide 3: Project Overview -->
+    <div class="slide">
+        <h2>Project Overview</h2>
+        <p style="font-size: 1.4rem; margin-bottom: 30px;">
+            <strong>Shop Hub</strong> - A Modern E-Commerce Solution
+        </p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>What We Built</h4>
+                <ul>
+                    <li>Full-featured online shopping platform</li>
+                    <li>Modern, responsive web application</li>
+                    <li>React-based Single Page Application</li>
+                    <li>TypeScript for type safety</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>Key Highlights</h4>
+                <ul>
+                    <li>Complete e-commerce functionality</li>
+                    <li>Modern UI/UX design</li>
+                    <li>Mobile-first responsive approach</li>
+                    <li>Real-time validation & feedback</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Problem Statement & Objectives -->
+    <div class="slide">
+        <h2>Problem Statement & Objectives</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Problem Statement</h4>
+                <ul>
+                    <li>Need for modern, responsive e-commerce platform</li>
+                    <li>Complex state management requirements</li>
+                    <li>User authentication and security needs</li>
+                    <li>Shopping cart functionality</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>Project Objectives</h4>
+                <ul>
+                    <li>Develop user-friendly e-commerce platform</li>
+                    <li>Implement secure authentication system</li>
+                    <li>Create intuitive product browsing experience</li>
+                    <li>Build robust shopping cart management</li>
+                    <li>Ensure responsive design across devices</li>
+                    <li>Implement comprehensive form validation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Technology Stack -->
+    <div class="slide">
+        <h2>Technology Stack</h2>
+        
+        <div class="tech-stack">
+            <div class="tech-card">
+                <h4>Frontend Framework</h4>
+                <ul>
+                    <li>React 18 with TypeScript</li>
+                    <li>Vite for fast development</li>
+                    <li>React Router DOM for navigation</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Styling & UI</h4>
+                <ul>
+                    <li>Tailwind CSS for utility-first styling</li>
+                    <li>Shadcn/ui for high-quality components</li>
+                    <li>Lucide React for beautiful icons</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>State Management</h4>
+                <ul>
+                    <li>React Context API for global state</li>
+                    <li>Local Storage for data persistence</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Development Tools</h4>
+                <ul>
+                    <li>TypeScript for type safety</li>
+                    <li>ESLint for code quality</li>
+                    <li>PostCSS for CSS processing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Key Features -->
+    <div class="slide">
+        <h2>Key Features</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>🔐 User Authentication</h4>
+                <ul>
+                    <li>Secure login/signup with validation</li>
+                    <li>Session persistence</li>
+                    <li>Password strength requirements</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>🛍️ Product Management</h4>
+                <ul>
+                    <li>Product catalog with categories</li>
+                    <li>Search functionality</li>
+                    <li>Detailed product views</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>🛒 Shopping Cart</h4>
+                <ul>
+                    <li>Add/remove products</li>
+                    <li>Quantity management</li>
+                    <li>Cart persistence</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>📱 Responsive Design</h4>
+                <ul>
+                    <li>Mobile-first approach</li>
+                    <li>Cross-device compatibility</li>
+                    <li>Modern UI/UX</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: System Architecture -->
+    <div class="slide">
+        <h2>System Architecture</h2>
+        <p style="margin-bottom: 30px;">Component-Based Architecture</p>
+        
+        <div class="architecture">
+┌─────────────────────────────────────┐
+│           Presentation Layer        │
+│        (React Components)           │
+├─────────────────────────────────────┤
+│         Business Logic Layer        │
+│      (Custom Hooks & Utils)         │
+├─────────────────────────────────────┤
+│        State Management Layer       │
+│        (React Context API)          │
+├─────────────────────────────────────┤
+│            Data Layer               │
+│    (Static Data & LocalStorage)     │
+└─────────────────────────────────────┘
+        </div>
+        
+        <div class="tech-stack">
+            <div class="tech-card">
+                <h4>Key Components</h4>
+                <ul>
+                    <li>Core Components: App, Layout, Header, Footer</li>
+                    <li>Page Components: Home, Products, Cart, Auth</li>
+                    <li>UI Components: ProductCard, Forms, Modals</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Implementation Highlights -->
+    <div class="slide">
+        <h2>Implementation Highlights</h2>
+        
+        <div class="code-block">
+// Authentication System
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const login = async (email, password) => {
+    // Secure authentication logic
+  };
+};
+
+// Cart Management
+const addToCartWithQuantity = (product, quantity) => {
+  setCart(prevCart => {
+    // Smart cart update logic
+  });
+};
+
+// Validation System
+export const validateEmail = (email) => {
+  // Comprehensive email validation
+  // Disposable domain detection
+};
+        </div>
+    </div>
+
+    <!-- Slide 9: Testing Strategy -->
+    <div class="slide">
+        <h2>Testing Strategy</h2>
+        <p style="margin-bottom: 30px;">Comprehensive Testing Approach</p>
+        
+        <div class="tech-stack">
+            <div class="tech-card">
+                <h4>Unit Testing</h4>
+                <ul>
+                    <li>Component functionality</li>
+                    <li>Utility functions</li>
+                    <li>Custom hooks</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Integration Testing</h4>
+                <ul>
+                    <li>Component interactions</li>
+                    <li>State management</li>
+                    <li>Routing functionality</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>User Acceptance Testing</h4>
+                <ul>
+                    <li>Complete user workflows</li>
+                    <li>Cross-browser compatibility</li>
+                    <li>Responsive design testing</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Performance Testing</h4>
+                <ul>
+                    <li>Load time optimization</li>
+                    <li>Memory management</li>
+                    <li>Bundle size optimization</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Project Achievements -->
+    <div class="slide">
+        <h2>Project Achievements</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Complete E-commerce Functionality</h4>
+                <ul>
+                    <li>Full product browsing & cart management</li>
+                    <li>User authentication & session handling</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>Modern Technology Implementation</h4>
+                <ul>
+                    <li>React 18 with TypeScript</li>
+                    <li>Vite build optimization</li>
+                    <li>Tailwind CSS styling</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>User Experience Excellence</h4>
+                <ul>
+                    <li>Mobile-first responsive design</li>
+                    <li>Real-time validation feedback</li>
+                    <li>Intuitive navigation</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>Technical Excellence</h4>
+                <ul>
+                    <li>Component-based architecture</li>
+                    <li>Efficient state management</li>
+                    <li>Performance optimization</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Technical Challenges & Solutions -->
+    <div class="slide">
+        <h2>Technical Challenges & Solutions</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Challenge 1: State Management</h4>
+                <ul>
+                    <li><strong>Problem:</strong> Complex cart and auth state</li>
+                    <li><strong>Solution:</strong> React Context API with proper structure</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>Challenge 2: Form Validation</h4>
+                <ul>
+                    <li><strong>Problem:</strong> Real-time user feedback</li>
+                    <li><strong>Solution:</strong> Custom validation utilities</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>Challenge 3: Cart Persistence</h4>
+                <ul>
+                    <li><strong>Problem:</strong> Data loss on page refresh</li>
+                    <li><strong>Solution:</strong> LocalStorage integration</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h4>Challenge 4: Responsive Design</h4>
+                <ul>
+                    <li><strong>Problem:</strong> Cross-device compatibility</li>
+                    <li><strong>Solution:</strong> Mobile-first approach</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Lessons Learned -->
+    <div class="slide">
+        <h2>Lessons Learned</h2>
+        
+        <div class="tech-stack">
+            <div class="tech-card">
+                <h4>State Management</h4>
+                <ul>
+                    <li>Proper state management is crucial for complex apps</li>
+                    <li>React Context API works well for medium-sized applications</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Component Design</h4>
+                <ul>
+                    <li>Reusable components significantly improve development efficiency</li>
+                    <li>Component composition reduces code duplication</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>TypeScript Benefits</h4>
+                <ul>
+                    <li>Type safety reduces bugs and improves development experience</li>
+                    <li>Better IDE support and code documentation</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Performance Optimization</h4>
+                <ul>
+                    <li>Efficient re-renders are crucial for smooth UX</li>
+                    <li>Build-time optimizations improve user experience</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Future Enhancements -->
+    <div class="slide">
+        <h2>Future Enhancements</h2>
+        
+        <div class="tech-stack">
+            <div class="tech-card">
+                <h4>Technical Enhancements</h4>
+                <ul>
+                    <li>Backend API integration</li>
+                    <li>Database implementation</li>
+                    <li>Payment processing</li>
+                    <li>Advanced search capabilities</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Feature Additions</h4>
+                <ul>
+                    <li>User reviews & ratings</li>
+                    <li>Wishlist functionality</li>
+                    <li>Order management system</li>
+                    <li>Admin panel</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4>Performance Optimizations</h4>
+                <ul>
+                    <li>Code splitting & lazy loading</li>
+                    <li>Caching strategies</li>
+                    <li>CDN implementation</li>
+                    <li>PWA conversion</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Project Statistics -->
+    <div class="slide">
+        <h2>Project Statistics</h2>
+        <p style="margin-bottom: 30px;">Development Metrics</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h4>2,000+</h4>
+                <p>Lines of Code</p>
+            </div>
+            <div class="stat-card">
+                <h4>15+</h4>
+                <p>Reusable Components</p>
+            </div>
+            <div class="stat-card">
+                <h4>6</h4>
+                <p>Main Pages</p>
+            </div>
+            <div class="stat-card">
+                <h4>100%</h4>
+                <p>TypeScript Coverage</p>
+            </div>
+        </div>
+        
+        <div class="tech-stack" style="margin-top: 30px;">
+            <div class="tech-card">
+                <h4>Performance Metrics</h4>
+                <ul>
+                    <li><strong>Load Time:</strong> < 3 seconds</li>
+                    <li><strong>Bundle Size:</strong> Optimized with Vite</li>
+                    <li><strong>Responsive:</strong> All device sizes supported</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Demo & Screenshots -->
+    <div class="slide">
+        <h2>Demo & Screenshots</h2>
+        
+        <div class="screenshots-grid">
+            <div class="screenshot-card">
+                <h4>Homepage</h4>
+                <!-- Replace with actual screenshot -->
+                <div class="screenshot-placeholder">
+                    📱 Add homepage.png here
+                </div>
+                <p>Featured products & hero section</p>
+            </div>
+            <div class="screenshot-card">
+                <h4>Products Page</h4>
+                <!-- Replace with actual screenshot -->
+                <div class="screenshot-placeholder">
+                    🛍️ Add products.png here
+                </div>
+                <p>Category filtering & search</p>
+            </div>
+            <div class="screenshot-card">
+                <h4>Product Details</h4>
+                <!-- Replace with actual screenshot -->
+                <div class="screenshot-placeholder">
+                    📋 Add product-details.png here
+                </div>
+                <p>Detailed view with add to cart</p>
+            </div>
+            <div class="screenshot-card">
+                <h4>Shopping Cart</h4>
+                <!-- Replace with actual screenshot -->
+                <div class="screenshot-placeholder">
+                    🛒 Add cart.png here
+                </div>
+                <p>Cart management interface</p>
+            </div>
+            <div class="screenshot-card">
+                <h4>Authentication</h4>
+                <!-- Replace with actual screenshot -->
+                <div class="screenshot-placeholder">
+                    🔐 Add login.png here
+                </div>
+                <p>Login/signup forms</p>
+            </div>
+            <div class="screenshot-card">
+                <h4>Mobile View</h4>
+                <!-- Replace with actual screenshot -->
+                <div class="screenshot-placeholder">
+                    📱 Add mobile.png here
+                </div>
+                <p>Responsive design showcase</p>
+            </div>
+        </div>
+        
+        <div class="highlight" style="margin-top: 30px;">
+            <h4>Demo Credentials</h4>
+            <p>Email: demo@example.com | Password: password</p>
+        </div>
+    </div>
+
+    <!-- Slide 16: GitHub Repository -->
+    <div class="slide">
+        <h2>Project Resources</h2>
+        
+        <div class="contact-info">
+            <h4>🔗 Project Links</h4>
+            <ul style="text-align: center;">
+                <li><strong>Repository:</strong> [GitHub URL]</li>
+                <li><strong>Branch:</strong> main</li>
+                <li><strong>Languages:</strong> TypeScript, CSS, HTML</li>
+            </ul>
+        </div>
+        
+        <div class="contact-info">
+            <h4>📚 Documentation</h4>
+            <ul style="text-align: center;">
+                <li>Complete project report available</li>
+                <li>Technical documentation included</li>
+                <li>Setup and deployment instructions</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 17: Thank You -->
+    <div class="slide">
+        <h2>Thank You!</h2>
+        <p style="font-size: 1.5rem; margin-bottom: 30px;">Questions & Discussion</p>
+        
+        <div class="contact-info">
+            <h4>Contact Information</h4>
+            <ul style="text-align: center;">
+                <li><strong>Name:</strong> [Your Name]</li>
+                <li><strong>Email:</strong> [Your Email]</li>
+                <li><strong>GitHub:</strong> [Your GitHub]</li>
+            </ul>
+        </div>
+        
+        <div class="highlight" style="margin-top: 30px;">
+            <h3>Thank you for your attention!</h3>
+            <p style="font-size: 1.3rem; margin-top: 10px;">Any questions?</p>
+        </div>
+    </div>
+</body>
+</html> 
