@@ -416,47 +416,47 @@ npm run preview
 ### Main Pages
 
 1. **Home Page** - Hero section, categories, featured products, pincode checker
-   ![Home Page](homepage.png)
+   ![Home Page](Screenshots/homepage.png)
 
 2. **Products Page** - Product listing with filters and search
-   ![Products Page](Products.png)
+   ![Products Page](Screenshots/Products.png)
 
 3. **Product Details** - Product information, image gallery, add to cart
-   ![Product Details](productdetails.png)
+   ![Product Details](Screenshots/productdetails.png)
 
 4. **Shopping Cart** - Cart items with quantity management
-   ![Shopping Cart](cart.png)
+   ![Shopping Cart](Screenshots/cart.png)
 
 5. **Checkout Page** - Shipping address form with state/city dropdowns and pincode validation
-   ![Checkout Page](checkout.png)
+   ![Checkout Page](Screenshots/checkout.png)
 
 6. **Payment Success** - Order confirmation with details and estimated delivery
-   ![Payment Success](payment_success.png)
+   ![Payment Success](Screenshots/payment_success.png)
 
 7. **My Orders** - Order history with estimated delivery dates and cancel functionality
-   ![My Orders](orders.png)
+   ![My Orders](Screenshots/orders.png)
 
 8. **Payment** - Payment Interface
-   ![Cancelled Orders](payment.png)
+   ![Cancelled Orders](Screenshots/payment.png)
 
 9. **Login/Signup** - Authentication pages with welcome messages
-   ![Login Signup](login.png)
-   ![Login Signup](signup.png)
+   ![Login Signup](Screenshots/login.png)
+   ![Login Signup](Screenshots/signup.png)
 
 10. **Admin Dashboard** - Dedicated admin interface with user management, product management, and accurate statistics
-    ![Admin Dashboard](admin.png)
+    ![Admin Dashboard](Screenshots/admin.png)
 
 11. **POST/auth/login** - API POST/auth/login
-    ![Admin Dashboard](post_login.jpeg)
+    ![Admin Dashboard](Screenshots/post_login.jpeg)
 
 12. **POST/auth/signup** - API POST/auth/signup
-    ![Admin Dashboard](post_register.jpeg)
+    ![Admin Dashboard](Screenshots/post_register.jpeg)
 
 13. **GET/products** - API GET/products
-    ![Admin Dashboard](get_products.jpeg)
+    ![Admin Dashboard](Screenshots/get_products.jpeg)
 
 14. **GET/products/id** - API GET/products/id
-    ![Admin Dashboard](get_product_id.jpeg)
+    ![Admin Dashboard](Screenshots/get_product_id.jpeg)
 
 ## 🔗 GitHub Repository
 
