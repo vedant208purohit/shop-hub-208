@@ -168,6 +168,8 @@ npm install
 
 # Create .env file
 cp .env.example .env  # Or create manually
+
+
 ```
 
 **Configure `.env` file:**
@@ -185,10 +187,12 @@ RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 
 ```bash
 # Navigate back to root directory
-cd ..
+cd frontend
 
 # Install dependencies
 npm install
+
+
 ```
 
 ### Step 4: Database Setup
@@ -229,7 +233,7 @@ After seeding the database, you can login as admin using:
 
 ```bash
 cd backend
-npm run dev
+npm start
 ```
 
 Backend will run on `http://localhost:5001`
@@ -237,6 +241,7 @@ Backend will run on `http://localhost:5001`
 **Terminal 2 - Frontend:**
 
 ```bash
+cd frontend
 npm run dev
 ```
 
