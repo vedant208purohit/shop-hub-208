@@ -1,8 +1,14 @@
 import axios from 'axios';
 
 // Use Vite environment variable when deployed (set VITE_API_URL in Vercel),
-// otherwise fall back to local development server.
-const API_URL = (import.meta.env.VITE_API_URL as string) || 'http://localhost:5001/api';
+// otherwise fall back to local development server. Normalize the value so it
+// always includes the `/api` path (the backend routes are mounted under `/api`).
+const rawUrl = import.meta.env.VITE_API_URL as string | undefined;
+let API_URL = 'http://localhost:5001/api';
+if (rawUrl && rawUrl.length > 0) {
+  const trimmed = rawUrl.replace(/\/+$/g, ''); // remove trailing slashes
+  API_URL = trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+}
 
 // Create axios instance
 const api = axios.create({
