@@ -70,7 +70,6 @@ router.get('/:id', async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(404).json({ message: 'Product not found' });
   }
-  // ------------------------------
 
   try {
     const product = await Product.findById(req.params.id);
@@ -119,7 +118,6 @@ router.put('/:id', protect, admin, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(404).json({ message: 'Product not found' });
   }
-  // ------------------------------
 
   try {
     const product = await Product.findById(req.params.id);
@@ -185,7 +183,6 @@ router.delete('/:id', protect, admin, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(404).json({ message: 'Product not found' });
   }
-  // ------------------------------
   
   try {
     const product = await Product.findById(req.params.id);

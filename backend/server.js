@@ -74,7 +74,7 @@ app.listen(PORT, async () => {
   // Update order statuses on server startup
   setTimeout(async () => {
     await updateOrderStatuses();
-  }, 5000); // Wait 5 seconds for DB connection to be ready
+  }, 5000); 
 });
 
 // Update order statuses every hour for all users and all orders

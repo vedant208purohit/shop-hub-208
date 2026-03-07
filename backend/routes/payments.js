@@ -34,7 +34,7 @@ router.post('/create-order', protect, async (req, res) => {
       return res.status(400).json({ message: 'Amount exceeds maximum limit' });
     }
 
-    // Convert amount to paise (Razorpay expects amount in smallest currency unit)
+    // Convert amount to paise 
     // Amount should be in rupees, so multiply by 100 to get paise
     const amountInPaise = Math.round(amount * 100);
     

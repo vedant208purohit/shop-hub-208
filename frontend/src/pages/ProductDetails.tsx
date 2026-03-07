@@ -39,11 +39,8 @@ const ProductDetails = () => {
         const response = await productsAPI.getById(id);
         const backendProduct = response.data;
 
-        // --- THIS IS THE FIX ---
-        // The property must be _id (with an underscore)
-        // to match your 'Product' interface from CartContext.
         setProduct({
-          _id: backendProduct._id, // <-- CHANGED
+          _id: backendProduct._id,
           name: backendProduct.name,
           price: backendProduct.price,
           image: backendProduct.image,
@@ -52,9 +49,8 @@ const ProductDetails = () => {
           description: backendProduct.description,
           rating: backendProduct.rating,
           reviews: backendProduct.reviews,
-          stock: backendProduct.stock, // <-- ADDED this
+          stock: backendProduct.stock,
         });
-        // You can remove 'as any' now because it matches the 'Product' type
       } catch (error) {
         console.error("Failed to fetch product from API:", error);
         setProduct(null);
@@ -101,10 +97,11 @@ const ProductDetails = () => {
     }
 
     // Prevent admins from adding to cart
-    if (user.role === 'admin') {
+    if (user.role === "admin") {
       toast({
         title: "Admin Access",
-        description: "Admins cannot add items to cart. Please use the admin panel to manage products.",
+        description:
+          "Admins cannot add items to cart. Please use the admin panel to manage products.",
         variant: "destructive",
       });
       return;

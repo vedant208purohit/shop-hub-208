@@ -1,9 +1,16 @@
-import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  ReactNode,
+} from "react";
 import { useToast } from "../hooks/use-toast";
 import { useAuth } from "./AuthContext";
 
 export interface Product {
-  _id: string; // <-- CHANGED from number
+  _id: string;
   stock: number;
   name: string;
   price: number;
@@ -22,8 +29,8 @@ interface CartItem extends Product {
 interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void; // <-- CHANGED from number
-  updateQuantity: (productId: string, quantity: number) => void; // <-- CHANGED from number
+  removeFromCart: (productId: string) => void; //
+  updateQuantity: (productId: string, quantity: number) => void; //
   clearCart: () => void;
   getCartTotal: () => number;
   getCartItemsCount: () => number;
@@ -48,7 +55,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
       if (previousUserId.current !== user._id) {
         isInitialLoad.current = true;
         previousUserId.current = user._id;
-        
+
         const savedCart = localStorage.getItem(`cart_${user._id}`);
         if (savedCart) {
           try {
@@ -59,13 +66,13 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
               setCart([]);
             }
           } catch (error) {
-            console.error('Error loading cart from localStorage:', error);
+            console.error("Error loading cart from localStorage:", error);
             setCart([]);
           }
         } else {
           setCart([]);
         }
-        
+
         // Mark initial load as complete after a short delay
         setTimeout(() => {
           isInitialLoad.current = false;
@@ -93,10 +100,11 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   const addToCart = (product: Product) => {
     // Prevent admins from adding to cart
-    if (user && user.role === 'admin') {
+    if (user && user.role === "admin") {
       toast({
         title: "Admin Access",
-        description: "Admins cannot add items to cart. Please use the admin panel to manage products.",
+        description:
+          "Admins cannot add items to cart. Please use the admin panel to manage products.",
         variant: "destructive",
       });
       return;

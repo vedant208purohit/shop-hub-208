@@ -101,7 +101,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { name: "Priya Sharma", role: "CEO & Founder", emoji: "👩‍💼" },
-              { name: "Arjun Patel", role: "CTO", emoji: "👨‍💻" },
+              { name: "Vedant Purohit", role: "CTO", emoji: "👨‍💻" },
               { name: "Anjali Singh", role: "Head of Marketing", emoji: "👩‍🎨" }
             ].map((member, index) => (
               <div key={index} className="text-center">

@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { authAPI } from '../services/api';
-import { useToast } from '../hooks/use-toast';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { authAPI } from "../services/api";
+import { useToast } from "../hooks/use-toast";
 
 interface User {
   _id: string;
@@ -12,7 +12,14 @@ interface User {
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<boolean>;
-  signup: (name: string, email: string, password: string, phone?: string, address?: any, birthDate?: string) => Promise<boolean>;
+  signup: (
+    name: string,
+    email: string,
+    password: string,
+    phone?: string,
+    address?: any,
+    birthDate?: string
+  ) => Promise<boolean>;
   logout: () => void;
   isLoading: boolean;
 }
@@ -22,12 +29,14 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
@@ -35,13 +44,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     // Check if user is logged in on mount
     const checkAuth = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (token) {
         try {
           const response = await authAPI.getProfile();
           setUser(response.data);
         } catch (error) {
-          localStorage.removeItem('token');
+          localStorage.removeItem("token");
         }
       }
       setIsLoading(false);
@@ -54,20 +63,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const response = await authAPI.login({ email, password });
       const { token, _id, name, role } = response.data;
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
       const userData = { _id, email, name, role };
       setUser(userData);
       toast({
-        title: 'Login Successful',
+        title: "Login Successful",
         description: `Welcome back, ${name}!`,
       });
       setIsLoading(false);
       return true;
     } catch (error: any) {
       toast({
-        title: 'Login Failed',
-        description: error.response?.data?.message || 'Invalid credentials',
-        variant: 'destructive',
+        title: "Login Failed",
+        description: error.response?.data?.message || "Invalid credentials",
+        variant: "destructive",
       });
       setIsLoading(false);
       return false;
@@ -75,38 +84,39 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signup = async (
-    name: string, 
-    email: string, 
-    password: string, 
-    phone?: string, 
-    address?: any, 
+    name: string,
+    email: string,
+    password: string,
+    phone?: string,
+    address?: any,
     birthDate?: string
   ): Promise<boolean> => {
     setIsLoading(true);
     try {
-      const response = await authAPI.register({ 
-        name, 
-        email, 
+      const response = await authAPI.register({
+        name,
+        email,
         password,
         phone,
         address,
-        birthDate
+        birthDate,
       });
       const { token, _id, role } = response.data;
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
       const userData = { _id, email, name, role };
       setUser(userData);
       toast({
-        title: 'Registration Successful',
+        title: "Registration Successful",
         description: `Welcome ${name}!`,
       });
       setIsLoading(false);
       return true;
     } catch (error: any) {
       toast({
-        title: 'Registration Failed',
-        description: error.response?.data?.message || 'Could not create account',
-        variant: 'destructive',
+        title: "Registration Failed",
+        description:
+          error.response?.data?.message || "Could not create account",
+        variant: "destructive",
       });
       setIsLoading(false);
       return false;
@@ -114,13 +124,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = () => {
-    // Note: We keep the cart in localStorage so it can be restored when user logs back in
+    //  We keep the cart in localStorage so it can be restored when user logs back in
     // The cart will be cleared from state but saved in localStorage with user ID
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setUser(null);
     toast({
-      title: 'Logged Out',
-      description: 'You have been successfully logged out',
+      title: "Logged Out",
+      description: "You have been successfully logged out",
     });
   };
 
@@ -129,12 +139,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     login,
     signup,
     logout,
-    isLoading
+    isLoading,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

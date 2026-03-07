@@ -19,7 +19,6 @@ interface PincodeData {
 export const validatePincode = async (pincode: string): Promise<PincodeData | null> => {
   try {
     // Using fetch API instead of axios (fulfills requirement)
-    // Note: This is a demo. In production, use a real pincode API
     const response = await fetch(
       `https://api.postalpincode.in/pincode/${pincode}`
     );

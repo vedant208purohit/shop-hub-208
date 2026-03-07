@@ -1,20 +1,22 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import ProductCard from '../components/ProductCard';
-import Layout from '../components/Layout';
-import { Product } from '../context/CartContext';
-import { Search, Filter } from 'lucide-react';
-import { allProducts } from '../data/products';
-import { productsAPI } from '../services/api';
+import React, { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
+import Layout from "../components/Layout";
+import { Product } from "../context/CartContext";
+import { Search, Filter } from "lucide-react";
+import { allProducts } from "../data/products";
+import { productsAPI } from "../services/api";
 
 const Products = () => {
   const [searchParams] = useSearchParams();
-  const categoryFromUrl = searchParams.get('category');
-  const searchFromUrl = searchParams.get('search');
-  
-  const [selectedCategory, setSelectedCategory] = useState<string>(categoryFromUrl || 'All');
-  const [searchTerm, setSearchTerm] = useState(searchFromUrl || '');
-  const [sortBy, setSortBy] = useState('name');
+  const categoryFromUrl = searchParams.get("category");
+  const searchFromUrl = searchParams.get("search");
+
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    categoryFromUrl || "All"
+  );
+  const [searchTerm, setSearchTerm] = useState(searchFromUrl || "");
+  const [sortBy, setSortBy] = useState("name");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,13 +35,16 @@ const Products = () => {
       try {
         setLoading(true);
         const response = await productsAPI.getAll({
-          category: selectedCategory !== 'All' ? selectedCategory : undefined,
+          category: selectedCategory !== "All" ? selectedCategory : undefined,
           search: searchTerm || undefined,
           sort: sortBy,
         });
         setProducts(response.data.products);
       } catch (error) {
-        console.error('Failed to fetch products from API, using local data:', error);
+        console.error(
+          "Failed to fetch products from API, using local data:",
+          error
+        );
         // Fallback to local products
         setProducts(allProducts);
       } finally {
@@ -50,7 +55,14 @@ const Products = () => {
     fetchProducts();
   }, [selectedCategory, searchTerm, sortBy]);
 
-  const categories = ['All', 'Electronics', 'Fashion', 'Sports', 'Home & Garden', 'Books & Media'];
+  const categories = [
+    "All",
+    "Electronics",
+    "Fashion",
+    "Sports",
+    "Home & Garden",
+    "Books & Media",
+  ];
 
   const filteredProducts = useMemo(() => {
     return products;
@@ -62,10 +74,11 @@ const Products = () => {
       <section className="bg-gradient-to-br from-blue-50 to-purple-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {selectedCategory === 'All' ? 'All Products' : selectedCategory}
+            {selectedCategory === "All" ? "All Products" : selectedCategory}
           </h1>
           <p className="text-xl text-gray-600">
-            {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
+            {filteredProducts.length} product
+            {filteredProducts.length !== 1 ? "s" : ""} found
           </p>
         </div>
       </section>
@@ -94,8 +107,8 @@ const Products = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     selectedCategory === category
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   {category}
@@ -133,8 +146,12 @@ const Products = () => {
           ) : (
             <div className="text-center py-12">
               <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
-              <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                No products found
+              </h3>
+              <p className="text-gray-600">
+                Try adjusting your search or filter criteria
+              </p>
             </div>
           )}
         </div>

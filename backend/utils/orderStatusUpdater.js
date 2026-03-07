@@ -1,7 +1,7 @@
 const Order = require('../models/Order');
 
 /**
- * Check and update order statuses from pending to delivered
+ * Checking and update order statuses from pending to delivered
  * if estimated arrival date has passed
  * This runs for ALL users and ALL orders
  */
