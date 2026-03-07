@@ -65,8 +65,41 @@ const Products = () => {
   ];
 
   const filteredProducts = useMemo(() => {
-    return products;
-  }, [products]);
+    let result = products || [];
+
+    // Client-side category filter
+    if (selectedCategory && selectedCategory !== "All") {
+      result = result.filter((p) => p.category === selectedCategory);
+    }
+
+    // Client-side search
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      result = result.filter(
+        (p) =>
+          (p.name && p.name.toLowerCase().includes(term)) ||
+          (p.description && p.description.toLowerCase().includes(term))
+      );
+    }
+
+    // Client-side sorting
+    switch (sortBy) {
+      case "price-low":
+        result = [...result].sort((a, b) => (a.price || 0) - (b.price || 0));
+        break;
+      case "price-high":
+        result = [...result].sort((a, b) => (b.price || 0) - (a.price || 0));
+        break;
+      case "rating":
+        result = [...result].sort((a, b) => (b.rating || 0) - (a.rating || 0));
+        break;
+      case "name":
+      default:
+        result = [...result].sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+    }
+
+    return result;
+  }, [products, selectedCategory, searchTerm, sortBy]);
 
   return (
     <Layout>
